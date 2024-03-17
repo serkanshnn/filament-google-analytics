@@ -49,7 +49,7 @@ class FilamentGoogleAnalytics
 
     public function trajectoryValueAsTimeString()
     {
-        return Carbon::createFromTimestamp($this->value)->toTimeString();
+        return gmdate('H:i:s', $this->value);
     }
 
     public function trajectoryLabel()

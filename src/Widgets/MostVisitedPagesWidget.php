@@ -3,6 +3,7 @@
 namespace BezhanSalleh\FilamentGoogleAnalytics\Widgets;
 
 use BezhanSalleh\FilamentGoogleAnalytics\Traits;
+use Carbon\Carbon;
 use Filament\Widgets\ChartWidget;
 use Illuminate\Contracts\Support\Htmlable;
 use Spatie\Analytics\Facades\Analytics;
@@ -39,10 +40,10 @@ class MostVisitedPagesWidget extends ChartWidget
     protected function getData(): array
     {
         $lookups = [
-            'T' => Period::days(1),
-            'TW' => Period::days(7),
-            'TM' => Period::months(1),
-            'TY' => Period::years(1),
+            'T' => Period::create(Carbon::today(), Carbon::now()),
+            'TW' => Period::create(Carbon::today()->subDays(7), Carbon::now()),
+            'TM' => Period::create(Carbon::today()->subMonth(), Carbon::now()),
+            'TY' => Period::create(Carbon::today()->subYear(), Carbon::now()),
         ];
 
         $analyticsData = Analytics::get(

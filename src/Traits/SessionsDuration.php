@@ -14,8 +14,8 @@ trait SessionsDuration
         $results = $this->get('averageSessionDuration', 'date', Period::days(1));
 
         return [
-            'previous' => $results->first()['value'] ?? 0,
-            'result' => $results->last()['value'] ?? 0,
+            'previous' => $results->last()['value'] ?? 0,
+            'result' => $results->first()['value'] ?? 0,
         ];
     }
 
@@ -24,8 +24,8 @@ trait SessionsDuration
         $results = $this->get('averageSessionDuration', 'date', Period::create(Carbon::yesterday()->clone()->subDay(), Carbon::yesterday()));
 
         return [
-            'previous' => $results->first()['value'] ?? 0,
-            'result' => $results->last()['value'] ?? 0,
+            'previous' => $results->last()['value'] ?? 0,
+            'result' => $results->first()['value'] ?? 0,
         ];
     }
 

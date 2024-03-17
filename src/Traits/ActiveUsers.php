@@ -11,7 +11,7 @@ trait ActiveUsers
     private function performActiveUsersQuery(string $metric, int $days): array
     {
         $analyticsData = Analytics::get(
-            Period::days($days),
+            Period::days($days - 1),
             [$metric],
             ['date']
         );
