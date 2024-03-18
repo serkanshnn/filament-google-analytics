@@ -11,7 +11,7 @@ trait ActiveUsers
     private function performActiveUsersQuery(string $metric, int $days): array
     {
         $analyticsData = Analytics::get(
-            Period::create(Carbon::today(), Carbon::now())
+            Period::create(Carbon::today(), Carbon::now()),
             [$metric],
             ['date']
         );
